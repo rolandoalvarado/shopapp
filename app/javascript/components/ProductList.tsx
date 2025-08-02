@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import CartItemButton from "./CartItemButton";
+import AddCartItemButton from "./AddCartItemButton";
 import CartItemList from "./CartItemList";
 
 interface Product {
@@ -47,12 +47,12 @@ const ProductList: React.FC = () => {
             <h3 className="font-semibold">{product.name}</h3>
             <p className="text-gray-600">{product.code}</p>
             <p>${product.price}</p>
-            <CartItemButton productId={product.id} onAdd={fetchCartItems} />
+            <AddCartItemButton productId={product.id} onAdd={fetchCartItems} />
           </li>
         ))}
       </ul>
       {/* Cart Items Section */}
-      <CartItemList cartItems={cartItems} />
+      <CartItemList cartItems={cartItems} onRemove={fetchCartItems} />
     </div>
   );
 };

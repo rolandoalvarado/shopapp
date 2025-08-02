@@ -64,4 +64,35 @@ RSpec.describe "CartItems", type: :request do
       end
     end
   end
+
+  describe "DELETE /destroy" do
+    let!(:cart_item) { create(:cart_item, product: product) }
+
+    it "deletes a cart item" do
+      delete "/cart_items/#{cart_item.id}"
+
+      json_response = JSON.parse(response.body)
+      expect(json_response["message"]).to eq("Item removed from cart successfully")
+      expect(response).to have_http_status(:ok)
+      expect(CartItem.exists?(cart_item.id)).to be_falsey
+    end
+
+    it "returns an error when cart item does not exist" do
+      delete "/cart_items/9999"
+
+      json_response = JSON.parse(response.body)
+      expect(json_response["error"]).to eq("Cart item not found")
+      expect(response).to have_http_status(:not_found)
+    end
+
+    it "handles unexpected errors" do
+      allow(CartItem).to receive(:find).and_raise(StandardError.new("Unexpected error"))
+
+      delete "/cart_items/#{cart_item.id}"
+
+      json_response = JSON.parse(response.body)
+      expect(json_response["error"]).to eq("Unexpected error")
+      expect(response).to have_http_status(:internal_server_error)
+    end
+  end
 end

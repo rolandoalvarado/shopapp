@@ -24,4 +24,15 @@ class CartItemsController < ApplicationController
   rescue StandardError => e
     render json: { error: e.message }, status: :internal_server_error
   end
+
+  def destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+
+    render json: { message: "Item removed from cart successfully" }, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Cart item not found" }, status: :not_found
+  rescue StandardError => e
+    render json: { error: e.message }, status: :internal_server_error
+  end
 end

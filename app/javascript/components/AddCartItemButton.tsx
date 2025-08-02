@@ -1,11 +1,11 @@
 import React from "react";
 
-type CartItemButtonProps = {
+type AddCartItemButtonProps = {
   productId: number;
   onAdd?: () => void;
 };
 
-const CartItemButton: React.FC<CartItemButtonProps> = ({ productId, onAdd }) => {
+const AddCartItemButton: React.FC<AddCartItemButtonProps> = ({ productId, onAdd }) => {
   const handleAddToCart = async () => {
     try {
       const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content;
@@ -40,4 +40,4 @@ const CartItemButton: React.FC<CartItemButtonProps> = ({ productId, onAdd }) => 
   );
 };
 
-export default CartItemButton;
+export default AddCartItemButton;

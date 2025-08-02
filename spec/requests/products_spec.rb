@@ -10,7 +10,4 @@ RSpec.describe "Products", type: :request do
       expect(JSON.parse(response.body)).to be_an_instance_of(Array)
     end
   end
-
-  describe "GET /show" do
-  end
 end
