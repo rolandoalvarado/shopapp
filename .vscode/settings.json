@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.associations": {
+    "*.rb": "ruby"
+  },
+  "ruby.useLanguageServer": true,
+  "ruby.format": "standard",
+  "standardRuby.lint": {
+    "enabled": true
+  }
+}
