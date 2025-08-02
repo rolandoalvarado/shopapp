@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist", // or another separate directory
+    "rootDir": "./app/javascript", // only compile files from here
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx", // If you're using React
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": "./app/javascript",
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
+  },
+  "include": [
+    "app/javascript/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
