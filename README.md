@@ -6,7 +6,7 @@ You are the developer in charge of building a cash register. This app will be ab
 ### Ruby: ruby 3.4.4 (2025-05-14 revision a38531fd3f) +PRISM [x86_64-darwin24]
 ### Rails: Rails 7.2.2.1
 ### Database: Postgresql
-### App Servers: Puma
+### App Server: Puma
 ### Linters:
 * rubocop
 * rubocop-rspec
