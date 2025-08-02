@@ -2,19 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import AddCartItemButton from "./AddCartItemButton";
 import CartItemList from "./CartItemList";
-
-interface Product {
-  id: number;
-  code: string;
-  name: string;
-  price: number;
-}
-
-interface CartItem {
-  id: number;
-  product: Product;
-  quantity: number;
-}
+import { Product } from "../models/Product";
+import { CartItem } from "../models/CartItem";
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -51,7 +40,6 @@ const ProductList: React.FC = () => {
           </li>
         ))}
       </ul>
-      {/* Cart Items Section */}
       <CartItemList cartItems={cartItems} onRemove={fetchCartItems} />
     </div>
   );

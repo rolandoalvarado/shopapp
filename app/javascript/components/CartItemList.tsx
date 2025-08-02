@@ -1,21 +1,7 @@
 import React from "react";
 
 import RemoveCartItemButton from "./RemoveCartItemButton";
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-};
-
-type CartItem = {
-  id: number;
-  product: Product;
-  quantity: number;
-  adjusted_price: number;
-  total_price: number;
-};
-
+import { CartItem } from "../models/CartItem";
 
 type CartItemListProps = {
   cartItems: CartItem[];

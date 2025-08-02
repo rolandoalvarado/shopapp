@@ -20,7 +20,6 @@ const AddCartItemButton: React.FC<AddCartItemButtonProps> = ({ productId, onAdd 
       });
 
       if (response.ok) {
-        alert("Item added to cart!");
         onAdd?.();
       } else {
         alert("Failed to add item.");
