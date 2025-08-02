@@ -1,24 +1,33 @@
-# README
+# Technical Evaluation App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Problem to Solve:
+You are the developer in charge of building a cash register. This app will be able to add products to a cart and display total price.
 
-Things you may want to cover:
+Pre-requites:
 
-* Ruby version
+* Back-end:
+1. Ruby version 3.4.4
+2. Rails 7.2.2.1
+3. Postgresql
 
-* System dependencies
+* Front-end:
+1. Tailwindcss
+2. Haml
+3. React
+4. Typescript
 
-* Configuration
+* Test:
+1. Rspec
+2. FactoryBot
+3. Faker
+4. Database Cleaner
 
-* Database creation
+* Important commands:
+1. Add default products.
+~# rails db:seed
 
-* Database initialization
+2. Clear assets and recompile after fron-end changes.
+~# bin/rails assets:clobber assets:precompile  
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. Run rails and yarn
+~# bin/dev
