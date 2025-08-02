@@ -15,7 +15,8 @@
     ]
   },
   "include": [
-    "app/javascript/**/*.ts"
+    "app/javascript/**/*.ts",
+    "app/javascript/**/*.tsx",
   ],
   "exclude": [
     "dist",
