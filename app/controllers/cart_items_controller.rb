@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.includes(:product)
     # Return cart items with product details
-    render json: @cart_items.as_json(include: { product: { only: [ :code, :name, :price ] } })
+    render json: @cart_items, status: :ok
   end
 
   def create
