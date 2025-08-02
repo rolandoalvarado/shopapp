@@ -16,6 +16,16 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
+# Use Tailwind CSS for styling [https://tailwindcss.com/]
+gem "tailwindcss-rails"
+
+# Use Active Job for background jobs [https://guides.rubyonrails.org/active_job_basics.html]
+gem "activejob", "~> 7.2.2"
+
+# Use Active Storage for file uploads [https://guides.rubyonrails.org/active_storage_overview.html]
+gem "activestorage", "~> 7.2.2"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

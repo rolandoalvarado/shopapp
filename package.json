@@ -1,20 +1,28 @@
 {
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "eslint": "^9.32.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "tailwindcss": "^4.1.11"
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.8",
     "esbuild-plugin-ts": "^0.1.1-rev-1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"
   },
   "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./app/assets/tailwind/application.css -o ./app/assets/builds/application.css --minify",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
     "lint": "eslint ."
-  }
+  },
+  "name": "shop_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "rolandoalvarado <cartechcebu@gmail.com>",
+  "license": "MIT"
 }

@@ -16,8 +16,12 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", type: "module"
 
-  %body
-    #root
+  %body.bg-gray-50.text-gray-900
+    - if notice
+      %div.bg-green-100.text-green-800.p-4.rounded.mb-4= notice
+    - if alert
+      %div.bg-red-100.text-red-800.p-4.rounded.mb-4= alert
+
     = yield
     %footer
       %p
