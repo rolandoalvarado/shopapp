@@ -1,33 +1,51 @@
 # Technical Evaluation App
 
-* Problem to Solve:
+### Problem to Solve:
 You are the developer in charge of building a cash register. This app will be able to add products to a cart and display total price.
 
-Pre-requites:
+### Ruby: ruby 3.4.4 (2025-05-14 revision a38531fd3f) +PRISM [x86_64-darwin24]
+### Rails: Rails 7.2.2.1
+### Database: Postgresql
+### App Servers: Puma
+### Linters:
+* rubocop
+* rubocop-rspec
+* rubocop-rails
+* rubocop-performance
+* brakeman
+* haml_lint
+* es_lint
 
-* Back-end:
-1. Ruby version 3.4.4
-2. Rails 7.2.2.1
-3. Postgresql
+### Front-end:
+* Tailwindcss
+* Haml
+* React
+* Typescript
 
-* Front-end:
-1. Tailwindcss
-2. Haml
-3. React
-4. Typescript
+### Test:
+* Rspec
+* FactoryBot
+* Faker
+* Database Cleaner
 
-* Test:
-1. Rspec
-2. FactoryBot
-3. Faker
-4. Database Cleaner
+### Configuration:
+* Setup Linters
+```
+bin/dev/ensure_tools
+```
 
-* Important commands:
-1. Add default products.
-~# rails db:seed
+* Setup Database
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-2. Clear assets and recompile after fron-end changes.
+* Clear assets and recompile after fron-end changes.
+```
 ~# bin/rails assets:clobber assets:precompile  
-
-3. Run rails and yarn
+```
+* Run rails and yarn
+```
 ~# bin/dev
+```

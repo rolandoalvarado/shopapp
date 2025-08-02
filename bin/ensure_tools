@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+gem uninstall -aIx rubocop rubocop-rspec rubocop-rails haml_lint bundler-audit
+gem install --no-document cucumber_lint -v '0.1.2'
+gem install --no-document rubocop -v '1.75.0'
+gem install --no-document rubocop-rspec -v '2.15.0'
+gem install --no-document rubocop-rails -v '2.17.2'
+gem install --no-document rubocop-performance -v '1.15.0'
+gem install --no-document brakeman -v '5.3.1'
+gem install --no-document haml_lint -v '0.42.0'
+gem install --no-document bundler -v '2.3.25'
+gem install --minimal-deps --no-document bundler-audit
+
+if [ "$1" != "--skip-yarn" ]; then
+  if [ `command -v yarn` ]; then
+    yarn
+    yarn global add eslint
+  else
+    if [ `command -v brew` ]; then
+      echo "WARNING: Could not find yarnpkg."
+      echo "You can install Yarn through the Homebrew package manager (on MacOs) with:"
+      if [ `command -v node` ]; then
+        echo "brew install yarn --without-node"
+      else
+        echo "brew install yarn"
+      fi
+      exit 1
+    else
+      echo "You can install brew via the command:"
+      echo '/usr/bin/env ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+    fi
+  fi
+fi
