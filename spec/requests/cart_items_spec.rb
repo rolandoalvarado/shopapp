@@ -3,6 +3,28 @@ require 'rails_helper'
 RSpec.describe "CartItems", type: :request do
   let(:product) { create(:product) }
 
+  describe "GET /index" do
+    it "returns a list of cart items with product details" do
+      create(:cart_item, product: product)
+
+      get "/cart_items"
+
+      expect(response).to have_http_status(:ok)
+      json_response = JSON.parse(response.body)
+      expect(json_response).to be_an(Array)
+      expect(json_response.size).to eq(1)
+
+      cart_item = json_response.first
+      expect(cart_item["id"]).to eq(product.id)
+      expect(cart_item["quantity"]).to eq(1)
+      expect(cart_item["product"]).to include({
+        "name" => product.name,
+        "code" => product.code,
+        "price" => product.price.to_d.to_s
+      })
+    end
+  end
+
   describe "POST /create" do
     it "creates a new cart item" do
       post "/cart_items", params: { product_id: product.id, quantity: 1 }
@@ -28,6 +50,18 @@ RSpec.describe "CartItems", type: :request do
       json_response = JSON.parse(response.body)
       expect(json_response["error"]).to eq("Unexpected error")
       expect(response).to have_http_status(:internal_server_error)
+    end
+
+    context 'when product already exists in cart' do
+      it "increments the quantity of the existing cart item" do
+        create(:cart_item, product: product, quantity: 1)
+
+        post "/cart_items", params: { product_id: product.id, quantity: 1 }
+
+        json_response = JSON.parse(response.body)
+        expect(json_response["message"]).to eq("Item added to cart successfully")
+        expect(json_response["cart_item"]["quantity"]).to eq(2)
+      end
     end
   end
 end

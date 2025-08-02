@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import CartItemButton from "./CartItemButton";
+import CartItemList from "./CartItemList";
 
 interface Product {
   id: number;
@@ -9,13 +10,33 @@ interface Product {
   price: number;
 }
 
+interface CartItem {
+  id: number;
+  product: Product;
+  quantity: number;
+}
+
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // Fetch products
+  const fetchProducts = async () => {
+    const res = await fetch("/products.json");
+    const data = await res.json();
+    setProducts(data);
+  };
+
+  // Fetch cart items
+  const fetchCartItems = async () => {
+    const res = await fetch("/cart_items.json");
+    const data = await res.json();
+    setCartItems(data);
+  };
 
   useEffect(() => {
-    fetch("/products.json")
-      .then((res) => res.json())
-      .then((data: Product[]) => setProducts(data));
+    fetchProducts();
+    fetchCartItems();
   }, []);
 
   return (
@@ -26,10 +47,12 @@ const ProductList: React.FC = () => {
             <h3 className="font-semibold">{product.name}</h3>
             <p className="text-gray-600">{product.code}</p>
             <p>${product.price}</p>
-            <CartItemButton productId={product.id} />
+            <CartItemButton productId={product.id} onAdd={fetchCartItems} />
           </li>
         ))}
       </ul>
+      {/* Cart Items Section */}
+      <CartItemList cartItems={cartItems} />
     </div>
   );
 };
