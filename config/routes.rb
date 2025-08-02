@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   root "sites#index"
 
   resources :products, only: [ :index, :show ]
-  resources :cart_items, only: [ :create, :update, :destroy ]
+  resources :cart_items, only: [ :create ]
 end

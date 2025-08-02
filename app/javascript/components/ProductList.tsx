@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import CartItemButton from "./CartItemButton";
+
 interface Product {
   id: number;
   code: string;
@@ -24,9 +26,7 @@ const ProductList: React.FC = () => {
             <h3 className="font-semibold">{product.name}</h3>
             <p className="text-gray-600">{product.code}</p>
             <p>${product.price}</p>
-            <button className="mt-2 px-4 py-1 bg-blue-500 text-white rounded">
-              Add to Cart
-            </button>
+            <CartItemButton productId={product.id} />
           </li>
         ))}
       </ul>
