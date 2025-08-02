@@ -18,7 +18,6 @@ const ProductList: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Products</h2>
       <ul className="grid grid-cols-2 gap-4">
         {products.map((product) => (
           <li key={product.id} className="p-4 border rounded-lg">
