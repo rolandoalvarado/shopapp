@@ -1,7 +1,7 @@
 require "rails_helper"
 require "ostruct"
 
-RSpec.describe PricingRules::BulkPercentageDiscountRule do
+RSpec.describe PricingRules::BulkPercentageDiscountRule, type: :service do
   let(:product) { create(:product, name: "Coffee", code: "CF1", price: 11.23) }
 
   let(:rule) do

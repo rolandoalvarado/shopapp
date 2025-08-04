@@ -9,11 +9,11 @@ module PricingRules
     end
 
     def apply(cart_items)
-      item = cart_items.find { |item| item.product.code == @product_code }
-      return unless item && item.quantity >= @threshold
+      item = cart_items.find { |item| item.product.code == product_code }
+      return unless item && item.quantity >= threshold
 
       original_total = item.product.price * item.quantity
-      discount_total = original_total * (@discount_percentage / 100.0)
+      discount_total = original_total * (discount_percentage / 100.0)
       item.discount ||= 0
       item.discount += discount_total
     end

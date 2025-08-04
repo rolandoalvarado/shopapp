@@ -7,7 +7,7 @@ module PricingRules
     end
 
     def apply(cart_items)
-      item = cart_items.find { |item| item.product.code == @product_code }
+      item = cart_items.find { |item| item.product.code == product_code }
       return unless item && item.quantity >= 2
 
       free = item.quantity / 2
