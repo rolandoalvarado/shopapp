@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import AddCartItemButton from "./AddCartItemButton";
 import CartItemList from "./CartItemList";
-import { Product } from "../models/Product";
-import { CartItem } from "../models/CartItem";
+import { Product } from "../types/Product";
+import { CartItem } from "../types/CartItem";
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);

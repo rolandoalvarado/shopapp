@@ -1,7 +1,7 @@
 import React from "react";
 
 import RemoveCartItemButton from "./RemoveCartItemButton";
-import { CartItem } from "../models/CartItem";
+import { CartItem } from "../types/CartItem";
 
 type CartItemListProps = {
   cartItems: CartItem[];
