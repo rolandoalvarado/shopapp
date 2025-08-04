@@ -1,18 +1,16 @@
 module PricingRules
   class BogoRule < BaseRule
-    attr_reader :product_code
+    attr_reader :item
 
-    def initialize(product_code:)
-      @product_code = product_code
+    def initialize(item:)
+      @item = item
     end
 
-    def apply(cart_items)
-      item = cart_items.find { |item| item.product.code == product_code }
-      return unless item && item.quantity >= 2
+    def apply
+      return 0 if item.quantity <= 0
 
-      free = item.quantity / 2
-      item.discount ||= 0
-      item.discount += item.product.price * free
+      paid_units = (item.quantity / 2.0).ceil
+      item.discount = (item.product.price * paid_units / item.quantity).round(3)
     end
   end
 end

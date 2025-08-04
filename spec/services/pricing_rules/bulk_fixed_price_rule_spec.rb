@@ -9,9 +9,9 @@ RSpec.describe PricingRules::BulkFixedPriceRule, type: :service do
       let(:cart_item) { OpenStruct.new(product: product, quantity: 3, discount: 0) }
 
       it "applies the fixed price discount to the cart item" do
-        rule = described_class.new(product_code: "SR1", threshold: 3, new_price: 4.50)
+        rule = described_class.new(item: cart_item)
 
-        rule.apply([ cart_item ])
+        rule.apply
 
         original_total = 3 * 5.00 # 15.00
         discounted_total = 3 * 4.50 # 13.50
@@ -25,22 +25,9 @@ RSpec.describe PricingRules::BulkFixedPriceRule, type: :service do
       let(:cart_item) { OpenStruct.new(product: product, quantity: 2, discount: nil) }
 
       it "does not apply any discount" do
-        rule = described_class.new(product_code: "SR1", threshold: 3, new_price: 4.00)
+        rule = described_class.new(item: cart_item, threshold: 3, new_price: 4.00)
 
-        rule.apply([ cart_item ])
-
-        expect(cart_item.discount).to be_nil
-      end
-    end
-
-    context "when product code does not match" do
-      let(:other_product) { create(:product, code: "OTHER", name: "Bananas", price: 5.00) }
-      let(:cart_item) { OpenStruct.new(product: other_product, quantity: 5, discount: nil) }
-
-      it "does not apply any discount" do
-        rule = described_class.new(product_code: "SR1", threshold: 3, new_price: 4.00)
-
-        rule.apply([ cart_item ])
+        rule.apply
 
         expect(cart_item.discount).to be_nil
       end

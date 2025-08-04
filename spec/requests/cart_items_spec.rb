@@ -18,9 +18,10 @@ RSpec.describe "CartItems", type: :request do
       expect(cart_item["id"]).to eq(product.id)
       expect(cart_item["quantity"]).to eq(1)
       expect(cart_item["product"]).to include({
+        "id" => product.id,
         "name" => product.name,
         "code" => product.code,
-        "price" => product.price.to_d.to_s
+        "price" => product.price.to_d
       })
     end
   end
@@ -31,7 +32,7 @@ RSpec.describe "CartItems", type: :request do
 
       json_response = JSON.parse(response.body)
       expect(json_response["message"]).to eq("Item added to cart successfully")
-      expect(json_response["cart_item"]["product_id"]).to eq(product.id)
+      expect(json_response["cart_item"]["product"]["id"]).to eq(product.id)
     end
 
     it "returns an error when product_id is missing" do

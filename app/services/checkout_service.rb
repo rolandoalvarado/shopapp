@@ -7,11 +7,11 @@ class CheckoutService
   end
 
   def total
-    pricing_rules.each { |rule| rule.apply(cart_items) }
+    pricing_rules.each { |rule| rule.apply }
 
     cart_items.sum do |item|
       subtotal = item.product.price * item.quantity
-      discount = item.discount.to_f
+      discount = item.adjusted_price.to_f * item.quantity
       subtotal - discount
     end
   end

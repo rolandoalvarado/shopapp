@@ -79,6 +79,8 @@ RSpec.describe CartItem, type: :model do
         adjusted_price: cart_item.adjusted_price.to_f.round(2),
         total_price: cart_item.total_price.to_f.round(2),
         product: {
+          id: product.id,
+          code: product.code,
           name: product.name,
           price: product.price.to_f.round(2)
         }
