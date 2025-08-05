@@ -6,7 +6,7 @@ export type CartItem = {
   product: Product;
   quantity: number;
   discount: number;
-  adjusted_price: number;
-  total_price: number;
+  adjustedPrice: number;
+  totalPrice: number;
 };
 

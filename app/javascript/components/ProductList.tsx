@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import camelcaseKeys from 'camelcase-keys';
 
 import AddCartItemButton from "./AddCartItemButton";
 import CartItemList from "./CartItemList";
@@ -22,7 +23,8 @@ const ProductList: React.FC = () => {
   const fetchCartItems = async () => {
     const res = await fetch("/cart_items.json");
     const data = await res.json();
-    setCartItems(data);
+    const camelCasedData = camelcaseKeys(data, { deep: true });
+    setCartItems(camelCasedData);
   };
 
   useEffect(() => {

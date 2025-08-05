@@ -15,7 +15,7 @@ const CartItemList: React.FC<CartItemListProps> = ({ cartItems, onRemove, onUpda
     return <div className="mt-6 text-gray-600">Cart is empty.</div>;
   }
 
-  const total = cartItems.reduce((sum, item) => sum + Number(item.total_price), 0).toFixed(2);
+  const total = cartItems.reduce((sum, item) => sum + Number(item.totalPrice), 0).toFixed(2);
 
   return (
     <div className="mt-6">
@@ -30,20 +30,20 @@ const CartItemList: React.FC<CartItemListProps> = ({ cartItems, onRemove, onUpda
               <div className="font-medium">{item.product.name}</div>
               <div className="text-sm text-gray-600">
                 Qty: {item.quantity}
-                {item.adjusted_price !== item.product.price && (
+                {item.adjustedPrice !== item.product.price && (
                   <span className="text-sm text-green-600 ml-2">(Discount Applied)</span>
                 )}
               </div>
               <div className="text-sm text-gray-600">
-                Price: ${item.adjusted_price.toFixed(2)}{" "}
-                {item.adjusted_price !== item.product.price && (
+                Price: ${item.adjustedPrice.toFixed(2)}{" "}
+                {item.adjustedPrice !== item.product.price && (
                   <span className="line-through text-red-400 ml-1">
                     ${item.product.price.toFixed(2)}
                   </span>
                 )}
               </div>
               <div className="text-sm font-semibold">
-                Subtotal: ${item.total_price.toFixed(2)}
+                Subtotal: ${item.totalPrice.toFixed(2)}
               </div>
               {item.discount && item.discount > 0 && (
                 <div className="text-xs text-green-500">
