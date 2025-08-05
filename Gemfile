@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.2", ">= 7.2.2.1"
+gem "rails", "~> 8.0.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 # Use postgresql as the database for Active Record
@@ -20,10 +20,10 @@ gem "cssbundling-rails"
 gem "tailwindcss-rails"
 
 # Use Active Job for background jobs [https://guides.rubyonrails.org/active_job_basics.html]
-gem "activejob", "~> 7.2.2"
+gem "activejob", "~> 8.0.2"
 
 # Use Active Storage for file uploads [https://guides.rubyonrails.org/active_storage_overview.html]
-gem "activestorage", "~> 7.2.2"
+gem "activestorage", "~> 8.0.2"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
