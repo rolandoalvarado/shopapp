@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist", // or another separate directory
     "rootDir": "./app/javascript", // only compile files from here
-    "target": "es6",
-    "module": "esnext",
+    "target": "es2020",
+    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react-jsx", // If you're using React
     "esModuleInterop": true,
